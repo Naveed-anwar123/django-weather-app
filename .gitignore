@@ -56,5 +56,7 @@ Pipfile.lock
 # migrations/
 
 # Exclude gunicorn service files if created locally
-gunicorn.service
+# gunicorn.service
 
+Dockerfile
+Old-Dockerfile

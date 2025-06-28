@@ -16,3 +16,6 @@ docker context create ec2-instance --driver remote --endpoint tcp:ec2-public-ip:
 docker context use ec2-instance
 
 
+
+
+
