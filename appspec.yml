@@ -12,18 +12,27 @@ files:
     destination: /etc/systemd/system/
     overwrite: true
 
+permissions:
+  - object: /home/ec2-user/django-weather-app
+    pattern: '**'
+    mode: '0755'
+    owern: root
+    group: root
+    type:
+      - file
+      - directory
 hooks:
   ApplicationStop:
     - location: scripts/stop_server.sh
       timeout: 20
-      runas: ec2-user
+      runas: root
 
   BeforeInstall:
     - location: scripts/install_dependencies.sh
       timeout: 300
-      runas: ec2-user
+      runas: root
 
   ApplicationStart:
     - location: scripts/start_server.sh
       timeout: 60
-      runas: ec2-user
+      runas: root
