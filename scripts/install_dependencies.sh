@@ -2,8 +2,8 @@
 cd /home/ec2-user/django-weather-app
 
 # Ensure Python and pip are installed
-sudo amazon-linux-extras install python3.8 -y
-sudo yum install -y nginx python3.8 python3-pip
+sudo amazon-linux-extras install nginx1 python3.8 -y
+sudo yum install -y python3.8 python3-pip
 
 # Create virtual environment inside the app folder
 python3.8 -m venv venv
