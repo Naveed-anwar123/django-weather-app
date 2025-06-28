@@ -16,7 +16,7 @@ permissions:
   - object: /home/ec2-user/django-weather-app
     pattern: '**'
     mode: '0755'
-    owern: root
+    owner: root
     group: root
     type:
       - file
