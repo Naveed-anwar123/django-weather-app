@@ -1,0 +1,60 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+.venv/
+
+# Django / Flask specific
+*.log
+db.sqlite3
+instance/
+settings_local.py
+
+# Environment variables
+.env
+*.env
+
+# CodeDeploy / build artifacts
+*.zip
+build/
+dist/
+tmp/
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Nginx and system config (runtime only)
+*.pid
+*.sock
+*.pid.lock
+
+# Ignore Gunicorn logs (runtime)
+gunicorn.log
+*.log
+
+# Coverage / testing
+htmlcov/
+.coverage
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+.pytest_cache/
+
+# Pipenv
+Pipfile.lock
+
+# Migrations (optional if generated dynamically)
+# migrations/
+
+# Exclude gunicorn service files if created locally
+gunicorn.service
+

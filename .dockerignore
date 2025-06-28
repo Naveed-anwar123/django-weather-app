@@ -1,0 +1,36 @@
+# Ignore Python cache files
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environments
+venv/
+env/
+*.env
+
+# Ignore distribution and packaging files
+*.egg
+*.egg-info
+dist/
+build/
+*.whl
+
+# Ignore IDE/editor-specific files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Ignore test and coverage files
+tests/
+*.cover
+coverage.xml
+*.hypothesis/
+
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+notes.sh
