@@ -2,7 +2,7 @@
 cd /home/ec2-user/django-weather-app
 
 # Ensure Python and pip are installed
-sudo dnf install -y python3 python3-pip
+sudo yum install -y python3 python3-pip
 
 # Create virtual environment inside the app folder
 python3 -m venv venv

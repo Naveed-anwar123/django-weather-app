@@ -27,7 +27,7 @@ hooks:
       timeout: 20
       runas: root
 
-  BeforeInstall:
+  AfterInstall:
     - location: scripts/install_dependencies.sh
       timeout: 300
       runas: root
