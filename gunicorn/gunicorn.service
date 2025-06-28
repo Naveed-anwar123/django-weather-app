@@ -1,0 +1,15 @@
+[Unit]
+Description=gunicorn daemon for Django Weather App
+After=network.target
+
+[Service]
+User=ec2-user
+Group=ec2-user
+WorkingDirectory=/home/ec2-user/django-weather-app
+ExecStart=/home/ec2-user/django-weather-app/venv/bin/gunicorn \
+    --workers 3 \
+    --bind 127.0.0.1:8000 \
+    Weather.wsgi:application
+
+[Install]
+WantedBy=multi-user.target

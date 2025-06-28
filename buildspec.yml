@@ -1,12 +1,13 @@
 version: 0.2
 
 phases:
-  # install:
-  #   runtime-versions:
-  #     python: 3.8
+  install:
+    commands:
+      - echo "Setting executable permissions for scripts..."
+      - chmod +x scripts/*.sh
   build:
     commands:
-      - echo "No build steps required for Django app"
+      - echo "Build complete"
 artifacts:
   files:
     - '**/*'
