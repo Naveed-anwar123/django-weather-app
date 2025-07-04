@@ -3,193 +3,536 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link rel="stylesheet" href="/style.css">
-    <title>Weather App</title>
-    
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
-
+    <title>WeatherPro - Professional Weather Forecaster</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-
-        /* sign in FORM */
-        #logreg-forms{
-            width:412px;
-            margin:10vh auto;
-            background-color:#f3f3f3;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-        }
-        #logreg-forms form {
-            width: 100%;
-            max-width: 410px;
-            padding: 15px;
-            margin: auto;
-        }
-        #logreg-forms .form-control {
-            position: relative;
+        * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
-            height: auto;
-            padding: 10px;
-            font-size: 16px;
-        }
-        #logreg-forms .form-control:focus { z-index: 2; }
-        #logreg-forms .form-signin input[type="email"] {
-            margin-bottom: -1px;
-            border-bottom-right-radius: 0;
-            border-bottom-left-radius: 0;
-        }
-        #logreg-forms .form-signin input[type="password"] {
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
         }
 
-        #logreg-forms .social-login{
-            width:390px;
-            margin:0 auto;
-            margin-bottom: 14px;
-        }
-        #logreg-forms .social-btn{
-            font-weight: 100;
-            color:white;
-            width:190px;
-            font-size: 0.9rem;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #8b5cf6 100%);
+            min-height: 100vh;
+            color: #333;
         }
 
-        #logreg-forms a{
-            display: block;
-            padding-top:10px;
-            color:lightseagreen;
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem 0;
         }
 
-        #logreg-form .lines{
-            width:200px;
-            border:1px solid red;
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            text-decoration: none;
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
 
-        #logreg-forms button[type="submit"]{ margin-top:10px; }
+        .nav-tagline {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.875rem;
+        }
 
-        #logreg-forms .facebook-btn{  background-color:#3C589C; }
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
 
-        #logreg-forms .google-btn{ background-color: #DF4B3B; }
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
 
-        #logreg-forms .form-reset, #logreg-forms .form-signup{ display: none; }
+        .header h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 1rem;
+        }
 
-        #logreg-forms .form-signup .social-btn{ width:210px; }
-
-        #logreg-forms .form-signup input { margin-bottom: 2px;}
-
-        .form-signup .social-login{
-            width:210px !important;
+        .header p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.125rem;
+            max-width: 600px;
             margin: 0 auto;
         }
 
-        /* Mobile */
+        /* Weather Card */
+        .weather-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+        }
 
-        @media screen and (max-width:500px){
-            #logreg-forms{
-                width:300px;
+        .card-header {
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-header h2 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Search Form */
+        .search-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 0.5rem;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .search-btn {
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border: none;
+            border-radius: 0.5rem;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .search-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Card Content */
+        .card-content {
+            padding: 2rem;
+        }
+
+        /* Weather Display */
+        .weather-display {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .weather-icon {
+            font-size: 4rem;
+            color: #60a5fa;
+            margin-bottom: 1rem;
+        }
+
+        .temperature {
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .condition {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Weather Details Grid */
+        .weather-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .weather-item {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .weather-item-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .weather-item-icon.temperature { color: #f87171; }
+        .weather-item-icon.humidity { color: #60a5fa; }
+        .weather-item-icon.wind { color: #34d399; }
+        .weather-item-icon.visibility { color: #a78bfa; }
+
+        .weather-item-label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .weather-item-value {
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        /* Location Details */
+        .location-details {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .location-details h3 {
+            color: white;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .location-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .location-badge {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+        }
+
+        /* Clear Button */
+        .clear-btn {
+            display: block;
+            margin: 0 auto;
+            padding: 0.75rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 0.5rem;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .clear-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            text-decoration: none;
+            color: white;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .empty-state-icon {
+            font-size: 6rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 1rem;
+        }
+
+        .empty-state h3 {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .empty-state p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.125rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer h3 {
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Hidden class for conditional display */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 640px) {
+            .header h1 {
+                font-size: 2rem;
             }
-            
-            #logreg-forms  .social-login{
-                width:200px;
-                margin:0 auto;
-                margin-bottom: 10px;
+
+            .search-form {
+                flex-direction: column;
             }
-            #logreg-forms  .social-btn{
-                font-size: 1.3rem;
-                font-weight: 100;
-                color:white;
-                width:200px;
-                height: 56px;
-                
+
+            .search-input {
+                width: 100%;
             }
-            #logreg-forms .social-btn:nth-child(1){
-                margin-bottom: 5px;
+
+            .weather-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
-            #logreg-forms .social-btn span{
-                display: none;
+
+            .location-grid {
+                grid-template-columns: 1fr;
             }
-            #logreg-forms  .facebook-btn:after{
-                content:'Facebook';
-            }
-        
-            #logreg-forms  .google-btn:after{
-                content:'Google+';
-            }
-            
         }
     </style>
-
 </head>
 <body>
-
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Weather Application</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-brand">
+                <i class="fas fa-cloud"></i>
+                WeatherPro
+            </a>
+            <div class="nav-tagline">Universal Weather Forecaster</div>
         </div>
-      </nav>
+    </nav>
 
-<h1><center>Sample Python App Deployed via AWS CodeDeploy Step by Step</center></h1>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Professional Weather App</h1>
+            <p>Get accurate weather forecasts for any city worldwide with our advanced weather tracking system</p>
+        </div>
 
-    <div id="logreg-forms">
+        <!-- Main Weather Card -->
+        <div class="weather-card">
+            <div class="card-header">
+                <h2>Weather Search</h2>
 
-            <!-- Weather form ///////////////////-->
-            <form method="post" action="{% url 'index_url' %}" class="form-signin">
-            {% csrf_token %}
-            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Universal Weather Forcaster</h1>
-           
-            <p style="text-align:center"> {{ checker }}  </p>
-            
-            <br>
-            <input name="city" type="text" value="{{static_city}}" id="" class="form-control" placeholder="Enter Your City " required autofocus="">
-            <br>
+                <!-- Search Form -->
+                <form method="post" action="{% url 'index_url' %}" class="search-form">
+                    {% csrf_token %}
+                    <input
+                        name="city"
+                        type="text"
+                        value="{{static_city}}"
+                        class="search-input"
+                        placeholder="Enter your city..."
+                        required
+                        autofocus
+                    >
+                    <button type="submit" class="search-btn" id="submitBtn">
+                        Get Weather
+                    </button>
+                </form>
+            </div>
 
-            
-            {% if weather %}
+            <div class="card-content">
+                <!-- Weather Results (Django Template Logic) -->
+                {% if weather %}
+                <div class="weather-display">
+                    <div class="weather-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="temperature">{{weather}}°C</div>
+                    <div class="condition">Partly Cloudy</div>
 
-                <div style="text-align: left; margin: 0 auto 0 auto; width: 54%; padding: 0;">
-                    <h6 class="h6 mb-3 font-weight-normal" style="padding: 10px 0px 0px -50%;">Temperature : {{weather}} C <sup>0</sup> </h6>
-                    <h6 class="h6 mb-3 font-weight-normal" style="padding: 10px 0px 0px -50%;">City : {{city_name}}</h6>
-                    <h6 class="h6 mb-3 font-weight-normal" style="padding: 10px 0px 0px -50%;">Region : {{region}}</h6>
-                    <h6 class="h6 mb-3 font-weight-normal" style="padding: 10px 0px 0px -50%;">Country : {{country}}</h6>
-                    <h6 class="h6 mb-3 font-weight-normal" style="padding: 10px 0px 0px -50%;">Latitude : {{lat}}</h6>
-                    <h6 class="h6 mb-3 font-weight-normal" style="padding: 10px 0px 0px -50%;">Longitude : {{lon}}</h6>
-                    <h6 class="h6 mb-3 font-weight-normal" style="padding: 10px 0px 0px -50%;">Localtime : {{localtime}}</h6>
-                    <h6 class="h6 mb-3 font-weight-normal" style="padding: 10px 0px 0px -50%;">Continent : {{continent}}</h6>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>{{city_name}}, {{country}}</span>
+                    </div>
                 </div>
-                
-                <br>
-                <a style="color:white" href="/" class="btn btn-info btn-block" type="submit">Clear</a>
-            
-            {% else %}
-                <button class="btn btn-info btn-block" type="submit">Submit</button>
-            {% endif %}
-            
-            </form>
-            <!-- Weather form end ///////////////////-->
-            
+
+                <!-- Weather Details Grid -->
+                <div class="weather-grid">
+                    <div class="weather-item">
+                        <div class="weather-item-icon temperature">
+                            <i class="fas fa-thermometer-half"></i>
+                        </div>
+                        <div class="weather-item-label">Temperature</div>
+                        <div class="weather-item-value">{{weather}}°C</div>
+                    </div>
+
+                    <div class="weather-item">
+                        <div class="weather-item-icon humidity">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="weather-item-label">Humidity</div>
+                        <div class="weather-item-value">65%</div>
+                    </div>
+
+                    <div class="weather-item">
+                        <div class="weather-item-icon wind">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <div class="weather-item-label">Wind Speed</div>
+                        <div class="weather-item-value">12 km/h</div>
+                    </div>
+
+                    <div class="weather-item">
+                        <div class="weather-item-icon visibility">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="weather-item-label">Visibility</div>
+                        <div class="weather-item-value">10 km</div>
+                    </div>
+                </div>
+
+                <!-- Location Details -->
+                <div class="location-details">
+                    <h3>Location Details</h3>
+                    <div class="location-grid">
+                        <div>
+                            <div class="location-item">
+                                <span>Region:</span>
+                                <span class="location-badge">{{region}}</span>
+                            </div>
+                            <div class="location-item">
+                                <span>Country:</span>
+                                <span class="location-badge">{{country}}</span>
+                            </div>
+                            <div class="location-item">
+                                <span>Continent:</span>
+                                <span class="location-badge">{{continent}}</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="location-item">
+                                <span>Latitude:</span>
+                                <span style="font-family: monospace;">{{lat}}</span>
+                            </div>
+                            <div class="location-item">
+                                <span>Longitude:</span>
+                                <span style="font-family: monospace;">{{lon}}</span>
+                            </div>
+                            <div class="location-item">
+                                <span>Local Time:</span>
+                                <span style="font-family: monospace;">{{localtime}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clear Button -->
+                <a href="/" class="clear-btn">Search Another City</a>
+
+                {% else %}
+                <!-- Empty State -->
+                <div class="empty-state">
+                    <div class="empty-state-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Ready to Check the Weather?</h3>
+                    <p>Enter a city name above to get started</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-card">
+                <h3>Professional Weather Forecasting</h3>
+                <p>Deployed via AWS CodeDeploy with advanced weather tracking capabilities. Get real-time weather data from around the world.</p>
+            </div>
+        </div>
     </div>
 
+    <script>
+        // Simple form validation and loading state
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('.search-form');
+            const submitBtn = document.getElementById('submitBtn');
 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-   
+            if (form) {
+                form.addEventListener('submit', function() {
+                    submitBtn.textContent = 'Searching...';
+                    submitBtn.disabled = true;
+                });
+            }
+        });
+    </script>
 </body>
 </html>
